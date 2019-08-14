@@ -1,0 +1,50 @@
+{
+    "name": "rollup-plugin-consts",
+    "version": "1.0.0",
+    "description": "Import build time constants with Rollup",
+    "main": "dist/rollup-plugin-consts.cjs.js",
+    "module": "dist/rollup-plugin-consts.es.js",
+    "types": "index.d.ts",
+    "files": [
+        "dist",
+        "index.d.ts",
+        "consts.d.ts"
+    ],
+    "scripts": {
+        "build": "rollup -c",
+        "pretest": "npm run build",
+        "test": "jest",
+        "prepublish": "npm run test",
+        "format": "prettier \"src/*.js\" \"test/**/*.js\" \"*.{js,ts,md}\" --write"
+    },
+    "repository": "NotWoods/rollup-plugin-consts",
+    "bugs": "https://github.com/NotWoods/rollup-plugin-consts/issues",
+    "homepage": "https://github.com/NotWoods/rollup-plugin-consts#readme",
+    "keywords": [
+        "rollup",
+        "rollup-plugin",
+        "const",
+        "consts",
+        "constant"
+    ],
+    "author": "Jake Archibald",
+    "contributors": [
+        "Tiger Oakes <contact@tigeroakes.com> (https://tigeroakes.com)"
+    ],
+    "license": "Apache-2.0",
+    "peerDependencies": {
+        "rollup": ">=1.15.0 <2"
+    },
+    "devDependencies": {
+        "@types/jest": "^24.0.17",
+        "jest": "^24.8.0",
+        "prettier": "^1.18.2",
+        "rollup": "^1.19.4",
+        "typescript": "^3.5.3"
+    },
+    "prettier": {
+        "singleQuote": true,
+        "trailingComma": "es5",
+        "proseWrap": "always"
+    }
+}
