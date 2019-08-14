@@ -14,7 +14,6 @@
         "build": "rollup -c",
         "pretest": "npm run build",
         "test": "jest",
-        "prepublish": "npm run test",
         "format": "prettier \"src/*.js\" \"test/**/*.js\" \"*.{js,ts,md}\" --write"
     },
     "repository": "NotWoods/rollup-plugin-consts",
