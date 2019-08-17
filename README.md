@@ -73,6 +73,12 @@ export default {
 }
 ```
 
+## TypeScript
+
+The `consts` function is has a typings file. See
+[Usage with TypeScript](https://github.com/NotWoods/rollup-plugin-consts/wiki/Usage-with-TypeScript)
+to check how to create additional typings files for importing constants.
+
 ## Credits
 
 rollup-plugin-consts was originally created by

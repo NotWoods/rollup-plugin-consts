@@ -1,6 +1,6 @@
 {
     "name": "rollup-plugin-consts",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Import build time constants with Rollup",
     "main": "dist/rollup-plugin-consts.cjs.js",
     "module": "dist/rollup-plugin-consts.es.js",
@@ -36,7 +36,7 @@
     },
     "devDependencies": {
         "@types/jest": "^24.0.17",
-        "jest": "^24.8.0",
+        "jest": "^24.9.0",
         "prettier": "^1.18.2",
         "rollup": "^1.19.4",
         "typescript": "^3.5.3"

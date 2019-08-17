@@ -1,4 +1,3 @@
-// @ts-check
 const assert = require('assert');
 const { rollup } = require('rollup');
 const consts = require('../');
@@ -13,9 +12,7 @@ async function executeBundle(bundle) {
     const console = global.console;
 
     // Patch console.log and capture output
-    /** @type {string | undefined} */
     let testLog;
-    // @ts-ignore
     global.console = {
         log(msg) {
             testLog = msg;
@@ -46,8 +43,7 @@ async function executeBundle(bundle) {
  * @type {import('rollup').WarningHandler}
  */
 const onwarn = warning => {
-    const { code } = /** @type {import('rollup').RollupWarning} */ (warning);
-    expect(code).toEqual('EMPTY_BUNDLE');
+    expect(warning.code).toEqual('EMPTY_BUNDLE');
 };
 
 test('const boolean', async () => {
