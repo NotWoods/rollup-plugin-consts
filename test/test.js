@@ -9,14 +9,12 @@ const consts = require('../');
 async function executeBundle(bundle) {
     const generated = await bundle.generate({ format: 'cjs' });
 
-    const console = global.console;
+    const log = console.log;
 
     // Patch console.log and capture output
-    let testLog;
-    global.console = {
-        log(msg) {
-            testLog = msg;
-        },
+    let testLogOutput;
+    console.log = msg => {
+        testLogOutput = msg;
     };
 
     const fn = new Function(
@@ -33,9 +31,9 @@ async function executeBundle(bundle) {
         console.log(generated.output[0].code);
         throw err;
     } finally {
-        global.console = console;
+        console.log = log;
     }
-    return testLog;
+    return testLogOutput;
 }
 
 /**
