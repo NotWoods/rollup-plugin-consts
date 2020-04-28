@@ -13,7 +13,7 @@ async function executeBundle(bundle) {
 
     // Patch console.log and capture output
     let testLogOutput;
-    console.log = msg => {
+    console.log = (msg) => {
         testLogOutput = msg;
     };
 
@@ -40,7 +40,7 @@ async function executeBundle(bundle) {
  * Silences empty bundle warnings
  * @type {import('rollup').WarningHandler}
  */
-const onwarn = warning => {
+const onwarn = (warning) => {
     expect(warning.code).toEqual('EMPTY_BUNDLE');
 };
 
