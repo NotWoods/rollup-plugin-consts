@@ -15,6 +15,6 @@ import './consts';
  *     // Development only code ...
  * }
  */
-declare function constsPlugin(consts: { [name: string]: any }): Plugin;
+export function consts(consts: { [name: string]: any }): Plugin;
 
-export default constsPlugin;
+export default consts;
