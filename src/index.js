@@ -15,7 +15,8 @@ const moduleStart = 'consts:';
 /**
  * Import build time constants with Rollup.
  *
- * @param consts Replacement values in the form of string: replacement
+ * @param {{ [name: string]: unknown }} consts Replacement values in the form of string: replacement
+ * @returns {import('rollup').Plugin}
  *
  * @example
  * import environment from 'consts:environment';
