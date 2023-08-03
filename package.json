@@ -16,6 +16,7 @@
         "consts.d.ts"
     ],
     "scripts": {
+        "prepare": "npm run build",
         "build": "rollup -c",
         "pretest": "npm run build",
         "test": "jest && prettier src test .github \"*.{js,ts,mjs,md}\" --check",
