@@ -1,4 +1,5 @@
-const assert = require('assert');
+const test = require('node:test');
+const assert = require('node:assert');
 const { rollup } = require('rollup');
 const consts = require('../');
 
@@ -41,7 +42,7 @@ async function executeBundle(bundle) {
  * @type {import('rollup').WarningHandler}
  */
 const onwarn = (warning) => {
-    expect(warning.code).toEqual('EMPTY_BUNDLE');
+    assert.strictEqual(warning.code, 'EMPTY_BUNDLE');
 };
 
 test('const boolean', async () => {
@@ -54,7 +55,10 @@ test('const boolean', async () => {
             }),
         ],
     });
-    expect(await executeBundle(bundle)).toEqual('Pre-rendering some HTML...');
+    assert.strictEqual(
+        await executeBundle(bundle),
+        'Pre-rendering some HTML...'
+    );
 
     const notPrerenderBundle = await rollup({
         input: 'test/samples/const-boolean.js',
@@ -66,7 +70,7 @@ test('const boolean', async () => {
         ],
         onwarn,
     });
-    expect(await executeBundle(notPrerenderBundle)).toBeUndefined();
+    assert.strictEqual(await executeBundle(notPrerenderBundle), undefined);
 });
 
 test('const number', async () => {
@@ -79,7 +83,7 @@ test('const number', async () => {
         ],
         onwarn,
     });
-    expect(await executeBundle(lowVersionBundle)).toBeUndefined();
+    assert.strictEqual(await executeBundle(lowVersionBundle), undefined);
 
     const bundle = await rollup({
         input: 'test/samples/const-number.js',
@@ -89,7 +93,7 @@ test('const number', async () => {
             }),
         ],
     });
-    expect(await executeBundle(bundle)).toEqual('Newest version in use');
+    assert.strictEqual(await executeBundle(bundle), 'Newest version in use');
 });
 
 test('const string', async () => {
@@ -102,7 +106,7 @@ test('const string', async () => {
         ],
         onwarn,
     });
-    expect(await executeBundle(prodBundle)).toBeUndefined();
+    assert.strictEqual(await executeBundle(prodBundle), undefined);
 
     const devBundle = await rollup({
         input: 'test/samples/const-string.js',
@@ -112,7 +116,7 @@ test('const string', async () => {
             }),
         ],
     });
-    expect(await executeBundle(devBundle)).toEqual('Development only code');
+    assert.strictEqual(await executeBundle(devBundle), 'Development only code');
 });
 
 test('const object', async () => {
@@ -126,5 +130,5 @@ test('const object', async () => {
             }),
         ],
     });
-    expect(await executeBundle(bundle)).toEqual('Correct config found');
+    assert.strictEqual(await executeBundle(bundle), 'Correct config found');
 });
